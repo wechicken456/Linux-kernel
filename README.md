@@ -11,3 +11,9 @@ A collection of my notes and resources for learning kernel exploitation.
    3. https://vsociety.medium.com/the-de-vinci-of-dirtypipe-local-privilege-escalation-cve-2022-0847-e0e391d2727b
   
 
+## Netfilter/nftables
+1. [CVE-2023-0179](https://betrusted.it/blog/64-bytes-and-a-rop-chain-part-1/)
+   * [Part 2](https://betrusted.it/blog/64-bytes-and-a-rop-chain-part-2/)
+2. `nftables` and **CVE-2022-1015** [link](https://blog.dbouman.nl/2022/04/02/How-The-Tables-Have-Turned-CVE-2022-1015-1016/#5-cve-2022-1016)
+  
+
