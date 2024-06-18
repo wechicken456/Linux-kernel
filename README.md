@@ -17,3 +17,7 @@ A collection of my notes and resources for learning kernel exploitation.
 2. `nftables` and **CVE-2022-1015** [link](https://blog.dbouman.nl/2022/04/02/How-The-Tables-Have-Turned-CVE-2022-1015-1016/#5-cve-2022-1016)
   
 
+## file descriptors and io_uring
+<img width="677" alt="image" src="https://github.com/wechicken456/Linux-kernel/assets/55309735/704a3479-c4e6-42b1-a9dd-790ddf884cca">
+
+Each userspace file descriptor is a reference to the Open File Table in the kernel. The kernel must keep track of these references to be able to know when any given file structure is no longer used and can be freed; that is done using the ```f_count``` field.
