@@ -35,4 +35,9 @@ Each userspace file descriptor is a reference to the Open File Table in the kern
 
 Kernel mitigations:
 1. When a ```file``` structure corresponding to a Unix-domain socket gains a reference from an ```SCM_RIGHTS``` datagram, the ```inflight``` field of the corresponding ```unix_sock``` structure is incremented.
-2. When the other side accepts that reference, ```inflight``` is decremented. 
+2. When the other side accepts that reference, ```inflight``` is decremented.
+
+## io_uring
+[Authors' paper](https://kernel.dk/io_uring.pdf).
+
+(Examples of usage)[https://unixism.net/2020/04/io-uring-by-example-part-1-introduction/].
