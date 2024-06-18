@@ -17,7 +17,22 @@ A collection of my notes and resources for learning kernel exploitation.
 2. `nftables` and **CVE-2022-1015** [link](https://blog.dbouman.nl/2022/04/02/How-The-Tables-Have-Turned-CVE-2022-1015-1016/#5-cve-2022-1016)
   
 
-## file descriptors and io_uring
+## File descriptors
 <img width="677" alt="image" src="https://github.com/wechicken456/Linux-kernel/assets/55309735/704a3479-c4e6-42b1-a9dd-790ddf884cca">
 
 Each userspace file descriptor is a reference to the Open File Table in the kernel. The kernel must keep track of these references to be able to know when any given file structure is no longer used and can be freed; that is done using the ```f_count``` field.
+
+## SCM_RIGHTS
+**Unix-domain sockets** are use for inter-process communication. Processes can pass a fd to another through **SCM_RIGHTS** messages:
+
+1. Create a new reference to the file struct behind the sending file descriptor through ```sendmsg()``` syscall (implemented as ```unix_stream_sendmsg``` in the kernel).
+2. *Queue* the reference until recevier accepts the connection.
+3. *Receiver* decrements the reference to file.
+
+=> If both sides close their sockets before accepting the **inflight** references, they will lose the only visible references to the file structs.
+
+=> Those file structures will have a permanently elevated reference ```count``` and can never be freed. 
+
+Kernel mitigations:
+1. When a ```file``` structure corresponding to a Unix-domain socket gains a reference from an ```SCM_RIGHTS``` datagram, the ```inflight``` field of the corresponding ```unix_sock``` structure is incremented.
+2. When the other side accepts that reference, ```inflight``` is decremented. 
