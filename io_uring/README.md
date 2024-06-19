@@ -131,10 +131,30 @@ if (head != cqring->tail) {
 cqring->head = head;
 write_barrier();
 ```
-- ```read_barrier()```: if the kernel has indeed updated the tail, we can read it as part of our comparison in the if statement.
-- ```write_barrier()```: let the kernel know we have consumed this entry and updated new head.
+- ```read_barrier()```: Ensure previous writes are visible before doing subsequent memory reads.
+- ```write_barrier()```: Order this write after previous writes. 
 
 We can use masking here to retrieve the index of the head because the ```cqring->mask``` (size of the CQE array) is of powers of 2. From the original [paper](https://kernel.dk/io_uring.pdf): 
 > The ring counters themselves are free flowing 32-bit integers, and rely on natural wrapping when the number of completed events exceed the capacity of the ring. One advantage of this approach is that we can utilize the full size of the ring without having to manage a "ring is full" flag on the side, which would have complicated the management of the ring. With that, it also follows that the ring must be a power of 2 in size.
 
+## Submitting entries into a SQ
+Opposite to consuming (from the application's perpsective): application is writing to tail, kernel is consuming from head:
+```
+struct io_uring_sqe *sqe;
+unsigned tail, index;
+tail = sqring->tail;
+index = tail & (*sqring->ring_mask);
+sqe = &sqring→sqes[index];
+
+/* this function call fills in the SQE details for this IO request */
+init_io(sqe);
+
+/* fill the SQE index into the SQ ring array */
+sqring->array[index] = index;
+tail++;
+write_barrier();
+sqring->tail = tail;
+write_barrier();
+```
+- ```write_barrier``` is **VERY IMPORTANT** here because we want to make sure that the previous writes to this SQE happen before the tail write. Otherwise, the kernel will see a half-written SQE.
 
