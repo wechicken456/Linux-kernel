@@ -1,8 +1,12 @@
 # Resources
 [Original paper](https://kernel.dk/io_uring.pdf)
+
 [Lord of the io_uring (references and tutorials)](https://unixism.net/loti/)
-[io_uring_setup arguments and structs] (https://unixism.net/loti/ref-iouring/io_uring_setup.html)
+
+[io_uring_setup arguments and structs](https://unixism.net/loti/ref-iouring/io_uring_setup.html)
+
 [Blog](https://unixism.net/2020/04/io-uring-by-example-part-1-introduction/)
+
 [io_uring and SCM_RIGHTS](https://lwn.net/Articles/779472/)
 
 # Completion queue:
