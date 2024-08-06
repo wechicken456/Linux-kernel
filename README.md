@@ -52,11 +52,19 @@ https://www.man7.org/linux/man-pages/man1/unshare.1.html
 Then, to create a private root fs, use ```pivot_root```:
 https://www.man7.org/linux/man-pages/man2/pivot_root.2.html
 
+A process can belong to different namespaces.
+
 ```unshare``` and ```pivot_root``` does **NOT** automatically change the current working dir to the pivoted_root dir!
 
 To enter an already created namnespace, use the command ```nsenter``` (wrapper for [sys_setns](https://www.man7.org/linux/man-pages/man2/setns.2.html)):
 https://www.man7.org/linux/man-pages/man1/nsenter.1.html
 
-### NOTES
+
+### NOTES & TRICKS
+```unshare``` and ```pivot_root``` does **NOT** automatically change the current working dir to the pivoted_root dir!
+
+
 Any file descriptor opened **BEFORE** entering the pivoted_root/namespace will persist.
+
+If we have a reference to any namespace outside of the container (such as ```/proc/pid of process outside/mnt```), we can use ```setns(fd, 0)``` to switch to that namespace.
 
