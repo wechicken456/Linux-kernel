@@ -68,3 +68,8 @@ Any file descriptor opened **BEFORE** entering the pivoted_root/namespace will p
 
 If we have a reference to any namespace outside of the container (such as ```/proc/pid of process outside/mnt```), we can use ```setns(fd, 0)``` to switch to that namespace.
 
+
+## Symbolic links
+To overwrite an existing symbolic link for a **directory**, use the ```-n``` option in ```ln```: https://superuser.com/questions/645842/how-to-overwrite-a-symbolic-link-of-a-directory
+
+
