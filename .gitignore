@@ -1,0 +1,5 @@
+CVE-2024-1086/
+custom-modules/pipe/pipes-speed-test/*.data*
+custom-modules/pipe/pipes-speed-test/*.speed
+custom_modules/pipe/pipes-speed-test/
+**/.vscode

@@ -1,0 +1,7 @@
+kernel_key.der
+kernel_key.priv
+*Module.symvers*
+*modules.order*
+*.ko*
+*.o*
+*.mod*

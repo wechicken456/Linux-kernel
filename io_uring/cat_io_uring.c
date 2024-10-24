@@ -1,3 +1,5 @@
+// original authors' documentation: https://kernel.dk/io_uring.pdf
+
 #include <stdio.h>
 #include <stdlib.h>
 #include <sys/stat.h>
@@ -15,6 +17,7 @@
  * */
 #include <linux/io_uring.h>
 
+// set depth to only 1 because this example is meant to give an understanding of io_uring, not asynchronous I/O
 #define QUEUE_DEPTH 1
 #define BLOCK_SZ    1024
 
