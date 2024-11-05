@@ -98,9 +98,12 @@ cp -a busybox-$BUSYBOX_VERSION/_install/* fs
 
 echo "[+] Building modules..."
 fs_copy_dir=$PWD/fs/home/modules
+linux_dir=$PWD/linux-$KERNEL_VERSION
 cd src
 for dir in $(find $PWD/ -type d); do
 	make -C $dir || continue
 	cp $dir/*.ko $fs_copy_dir || continue
+# needs these modules to be present in the linux-X-X dir as well in order for gdb kernel scripts to load their debug info.
+	cp $dir/*.ko $linux_dir || continue 
 done
 
