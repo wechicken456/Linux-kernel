@@ -1,0 +1,33 @@
+#!/bin/sh
+
+# init script for qemu machine
+# DO NOT RUN THIS ON YOUR OWN MACHINE
+
+
+mount -t proc none /proc
+mount -t sysfs none /sys
+mount -t 9p -o trans=virtio,version=9p2000.L,nosuid hostshare /home/ctf
+
+for f in $(ls home/modules/*.ko); do
+    insmod $f
+done
+sysctl -w kernel.perf_event_paranoid=1
+
+mdev -s
+
+chmod 0666 /dev/vuln
+
+cat <<EOF
+
+
+Boot took $(cut -d' ' -f1 /proc/uptime) seconds
+
+
+EOF
+chmod 600 /flag
+chown 0.0 /flag
+
+# start sh with uid 1000 without root privileges
+#/bin/sh
+setuidgid 1000 /bin/sh
+#exec su -l ctf

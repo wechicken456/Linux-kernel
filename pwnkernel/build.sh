@@ -91,6 +91,8 @@ cd fs
 mkdir -p bin sbin etc proc sys usr/bin usr/sbin root home/ctf home/modules
 cd ..
 cp -a busybox-$BUSYBOX_VERSION/_install/* fs
+cp ./qemu_init fs/init
+chmod +x fs/init
 
 #
 # modules
