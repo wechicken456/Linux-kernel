@@ -16,4 +16,4 @@ Running the kernel:
 $ ./launch.sh
 ```
 
-All modules will be in `/`, ready to be `insmod`ed, and the host's home directory will be mounted as `/home/ctf` in the guest.
+All modules will be in `/`, ready to be `insmod`ed, and the host's current directory will be mounted as `/home/ctf` in the guest.
