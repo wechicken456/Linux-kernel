@@ -1,6 +1,6 @@
 Reference: https://scoding.de/linux-kernel-exploitation-buffer_overflow
 
-See my notes [here](https://www.notion.so/Process-and-task_struct-1348f5df87358075be32d9431aa31bd6) for more info.
+See my notes [here](https://www.notion.so/Process-and-task_struct-1348f5df87358075be32d9431aa31bd6?pvs=4) for more info.
 
 This toy challenge doesn't have KASLR enabled, so our lives are much easier..
 
