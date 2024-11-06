@@ -1,6 +1,6 @@
 # Linux-kernel
 A collection of my notes and resources for learning kernel exploitation.
-More notes [here](https://docs.google.com/document/d/1d-h7NJf2IDDT5ifg9XitlXnJHNWhDX12U-yUVZCRowM/edit?usp=sharing).
+More notes [here](https://docs.google.com/document/d/1d-h7NJf2IDDT5ifg9XitlXnJHNWhDX12U-yUVZCRowM/edit?usp=sharing) and [here](https://www.notion.so/Kernel-exploit-notebook-79acde7c62bb4c49ac21641b507d5c77?pvs=4).
 
 ## Dirty
 1. [Dirty Pagetable](https://yanglingxi1993.github.io/dirty_pagetable/dirty_pagetable.html)
