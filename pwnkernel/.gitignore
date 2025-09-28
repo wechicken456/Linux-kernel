@@ -15,4 +15,4 @@ pwncollege_src/
 **/kernel_key*
 **/*.der
 **/*.priv
-
+.vscode
