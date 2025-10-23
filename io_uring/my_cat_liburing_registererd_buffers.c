@@ -179,10 +179,10 @@ int main(int argc, char *argv[]) {
     // Register the buffers with the kernel. This allows the kernel to keep
     // long-term references of internal data structures This should reduce I/O
     // overhead.
-    /*if (io_uring_register_buffers(&ring, iovecs, QUEUE_DEPTH) < 0) {
+    if (io_uring_register_buffers(&ring, iovecs, QUEUE_DEPTH) < 0) {
         perror("io_uring_register_buffers");
         return 11;
-    }*/
+    }
 
     // print_sq_poll_kernel_thread_status();
 

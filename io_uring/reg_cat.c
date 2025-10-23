@@ -74,8 +74,7 @@ int read_and_print_file(char *filename) {
         blocks++;
 
     /*
-     *  each `iovec` is responsible for a 4KB block of data to read.
-     * The `iovecs` array will be passed to `readv()` as an argument.
+     * each `iovec` is responsible for a 4KB block of data to read.
      */
     int cnt_blocks = 0;
     while (bytes_remaining) {
